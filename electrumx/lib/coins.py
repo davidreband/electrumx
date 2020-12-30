@@ -1147,6 +1147,47 @@ class NamecoinRegtest(NamecoinTestnet):
     TX_COUNT = 1
     TX_COUNT_HEIGHT = 1
 
+    # Source: namecoin.org
+class Doichain(NameIndexMixin, AuxPowMixin, Coin):
+    NAME = "Doichain"
+    SHORTNAME = "DOI"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("0488B21E")
+    XPRV_VERBYTES = bytes.fromhex("0488ADE4")
+    P2PKH_VERBYTE = bytes.fromhex("34")
+    P2SH_VERBYTES = [bytes.fromhex("0d")]
+    WIF_BYTE = bytes.fromhex("e4")
+    GENESIS_HASH = ('000006fdd8b4d786fd9bdde5bae9486c464e3aa4336c5f8415dfdd3fc1679134'
+                    '234651063df5f8b01ecc2fc3a134fa1cb9dc9da9cce0149049483ba1b1469dfb')
+    DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
+    TX_COUNT = 4415768
+    TX_COUNT_HEIGHT = 329065
+    TX_PER_BLOCK = 10
+    RPC_PORT = 8338
+    PEERS = [ ]
+    BLOCK_PROCESSOR = block_proc.NameIndexBlockProcessor
+
+    # Name opcodes
+    OP_NAME_NEW = OpCodes.OP_1
+    OP_NAME_FIRSTUPDATE = OpCodes.OP_2
+    OP_NAME_UPDATE = OpCodes.OP_3
+    OP_NAME_DOI = OpCodes.OP_10
+
+    # Valid name prefixes.
+    NAME_NEW_OPS = [OP_NAME_NEW, -1, OpCodes.OP_2DROP]
+    NAME_FIRSTUPDATE_OPS = [OP_NAME_FIRSTUPDATE, "name", -1, -1,
+                            OpCodes.OP_2DROP, OpCodes.OP_2DROP]
+    NAME_UPDATE_OPS = [OP_NAME_UPDATE, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_DOI_OPS = [OP_NAME_DOI, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_OPERATIONS = [
+        NAME_NEW_OPS,
+        NAME_FIRSTUPDATE_OPS,
+        NAME_UPDATE_OPS,
+        NAME_DOI_OPS
+    ]
+
 
 class Dogecoin(AuxPowMixin, Coin):
     NAME = "Dogecoin"
