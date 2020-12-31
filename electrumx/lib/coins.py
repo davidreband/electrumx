@@ -1158,10 +1158,10 @@ class Doichain(NameIndexMixin, AuxPowMixin, Coin):
     P2SH_VERBYTES = [bytes.fromhex("0d")]
     WIF_BYTE = bytes.fromhex("e4")
     GENESIS_HASH = ('000006fdd8b4d786fd9bdde5bae9486c464e3aa4336c5f8415dfdd3fc1679134'
-                    '234651063df5f8b01ecc2fc3a134fa1cb9dc9da9cce0149049483ba1b1469dfb')
+                   )
     DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
-    TX_COUNT = 4415768
-    TX_COUNT_HEIGHT = 329065
+    TX_COUNT = 1
+    TX_COUNT_HEIGHT = 1
     TX_PER_BLOCK = 10
     RPC_PORT = 8338
     PEERS = [ ]
