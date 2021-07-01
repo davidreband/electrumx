@@ -1188,6 +1188,86 @@ class Doichain(NameIndexMixin, AuxPowMixin, Coin):
         NAME_DOI_OPS
     ]
 
+class DoichainTestnet(NameIndexMixin, AuxPowMixin, Coin):
+    NAME = "Doichain"
+    SHORTNAME = "DOI"
+    NET = "testnet"
+    XPUB_VERBYTES = bytes.fromhex("0488B21E")
+    XPRV_VERBYTES = bytes.fromhex("0488ADE4")
+    P2PKH_VERBYTE = bytes.fromhex("34")
+    P2SH_VERBYTES = [bytes.fromhex("0d")]
+    WIF_BYTE = bytes.fromhex("e4")
+    GENESIS_HASH = ('0000cd7572b3ecc78b7cddf49eda95e718d4df77c236ca2e375125e111e7e9c4'
+                   )
+    DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
+    TX_COUNT = 1
+    TX_COUNT_HEIGHT = 1
+    TX_PER_BLOCK = 10
+    RPC_PORT = 18338
+    PEERS = [ ]
+    BLOCK_PROCESSOR = block_proc.NameIndexBlockProcessor
+
+    # Name opcodes
+    OP_NAME_NEW = OpCodes.OP_1
+    OP_NAME_FIRSTUPDATE = OpCodes.OP_2
+    OP_NAME_UPDATE = OpCodes.OP_3
+    OP_NAME_DOI = OpCodes.OP_10
+
+    # Valid name prefixes.
+    NAME_NEW_OPS = [OP_NAME_NEW, -1, OpCodes.OP_2DROP]
+    NAME_FIRSTUPDATE_OPS = [OP_NAME_FIRSTUPDATE, "name", -1, -1,
+                            OpCodes.OP_2DROP, OpCodes.OP_2DROP]
+    NAME_UPDATE_OPS = [OP_NAME_UPDATE, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_DOI_OPS = [OP_NAME_DOI, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_OPERATIONS = [
+        NAME_NEW_OPS,
+        NAME_FIRSTUPDATE_OPS,
+        NAME_UPDATE_OPS,
+        NAME_DOI_OPS
+    ]  
+
+class DoichainRegtest(NameIndexMixin, AuxPowMixin, Coin):
+    NAME = "Doichain"
+    SHORTNAME = "DOI"
+    NET = "regtest"
+    XPUB_VERBYTES = bytes.fromhex("0488B21E")
+    XPRV_VERBYTES = bytes.fromhex("0488ADE4")
+    P2PKH_VERBYTE = bytes.fromhex("34")
+    P2SH_VERBYTES = [bytes.fromhex("0d")]
+    WIF_BYTE = bytes.fromhex("e4")
+    GENESIS_HASH = ('0231881e96d6690eb00bb69cd8e221df3564e2cd95829d47d131ed5110a34e9d'
+                   )
+    DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
+    TX_COUNT = 1
+    TX_COUNT_HEIGHT = 1
+    TX_PER_BLOCK = 10
+    RPC_PORT = 18332
+    PEERS = [ ]
+    BLOCK_PROCESSOR = block_proc.NameIndexBlockProcessor
+
+    # Name opcodes
+    OP_NAME_NEW = OpCodes.OP_1
+    OP_NAME_FIRSTUPDATE = OpCodes.OP_2
+    OP_NAME_UPDATE = OpCodes.OP_3
+    OP_NAME_DOI = OpCodes.OP_10
+
+    # Valid name prefixes.
+    NAME_NEW_OPS = [OP_NAME_NEW, -1, OpCodes.OP_2DROP]
+    NAME_FIRSTUPDATE_OPS = [OP_NAME_FIRSTUPDATE, "name", -1, -1,
+                            OpCodes.OP_2DROP, OpCodes.OP_2DROP]
+    NAME_UPDATE_OPS = [OP_NAME_UPDATE, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_DOI_OPS = [OP_NAME_DOI, "name", -1, OpCodes.OP_2DROP,
+                       OpCodes.OP_DROP]
+    NAME_OPERATIONS = [
+        NAME_NEW_OPS,
+        NAME_FIRSTUPDATE_OPS,
+        NAME_UPDATE_OPS,
+        NAME_DOI_OPS
+    ]       
+
 
 class Dogecoin(AuxPowMixin, Coin):
     NAME = "Dogecoin"
