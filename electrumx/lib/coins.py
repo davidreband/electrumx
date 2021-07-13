@@ -1156,7 +1156,7 @@ class Doichain(NameIndexMixin, AuxPowMixin, Coin):
     XPRV_VERBYTES = bytes.fromhex("0488ADE4")
     P2PKH_VERBYTE = bytes.fromhex("34")
     P2SH_VERBYTES = [bytes.fromhex("0d")]
-    WIF_BYTE = bytes.fromhex("e4")
+    WIF_BYTE = bytes.fromhex("b4")
     GENESIS_HASH = ('000006fdd8b4d786fd9bdde5bae9486c464e3aa4336c5f8415dfdd3fc1679134'
                    )
     DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
@@ -1194,9 +1194,9 @@ class DoichainTestnet(NameIndexMixin, AuxPowMixin, Coin):
     NET = "testnet"
     XPUB_VERBYTES = bytes.fromhex("0488B21E")
     XPRV_VERBYTES = bytes.fromhex("0488ADE4")
-    P2PKH_VERBYTE = bytes.fromhex("34")
-    P2SH_VERBYTES = [bytes.fromhex("0d")]
-    WIF_BYTE = bytes.fromhex("e4")
+    P2PKH_VERBYTE = bytes.fromhex("6F")
+    P2SH_VERBYTES = [bytes.fromhex("C4")]
+    WIF_BYTE = bytes.fromhex("EF")
     GENESIS_HASH = ('0000cd7572b3ecc78b7cddf49eda95e718d4df77c236ca2e375125e111e7e9c4'
                    )
     DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
@@ -1234,9 +1234,9 @@ class DoichainRegtest(NameIndexMixin, AuxPowMixin, Coin):
     NET = "regtest"
     XPUB_VERBYTES = bytes.fromhex("0488B21E")
     XPRV_VERBYTES = bytes.fromhex("0488ADE4")
-    P2PKH_VERBYTE = bytes.fromhex("34")
-    P2SH_VERBYTES = [bytes.fromhex("0d")]
-    WIF_BYTE = bytes.fromhex("e4")
+    P2PKH_VERBYTE = bytes.fromhex("6F") #111
+    P2SH_VERBYTES = [bytes.fromhex("C4")] #196
+    WIF_BYTE = bytes.fromhex("EF") #239
     GENESIS_HASH = ('0231881e96d6690eb00bb69cd8e221df3564e2cd95829d47d131ed5110a34e9d'
                    )
     DESERIALIZER = lib_tx.DeserializerAuxPowSegWit
